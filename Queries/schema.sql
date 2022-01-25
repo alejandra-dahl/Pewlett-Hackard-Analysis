@@ -58,5 +58,19 @@ FOREIGN KEY (dept_no) REFERENCES departments (dept_no),
   PRIMARY KEY (emp_no, dept_no)
 );
 
--- Test
-SELECT * FROM departments
+-- Test Table Creation
+SELECT * FROM departments;
+
+-- Test Data Upload
+SELECT * FROM departments;
+
+SELECT * FROM employees;
+
+SELECT * FROM dept_manager;
+
+SELECT * FROM salaries;
+
+SELECT * FROM titles;
+
+SELECT * FROM dept_emp;
+

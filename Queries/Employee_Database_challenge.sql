@@ -35,3 +35,18 @@ GROUP BY titles
 ORDER BY count(emp_no) DESC;
 
 
+-- Join employee, dept_emp, and title tables to create eligibility table
+SELECT DISTINCT ON (e.emp_no) e.emp_no, 
+    e.first_name, e.last_name,e.birth_date,
+    d.from_date, d.to_date,
+    t.titles
+--INTO mentorship_eligibility
+FROM employees as e
+INNER JOIN dept_emp as d
+ON (e.emp_no = d.emp_no)
+INNER JOIN titles as t
+ON (e.emp_no = t.emp_no)
+WHERE (e.birth_date BETWEEN '1965-01-01' AND '1965-12-31')
+    AND (d.to_date = '9999-01-01')
+ORDER BY e.emp_no;
+

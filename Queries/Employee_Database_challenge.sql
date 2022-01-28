@@ -50,3 +50,28 @@ WHERE (e.birth_date BETWEEN '1965-01-01' AND '1965-12-31')
     AND (d.to_date = '9999-01-01')
 ORDER BY e.emp_no;
 
+--ADDITIONAL TABLES AND QUERIES
+
+--Mentorship plus their salaries
+SELECT m.emp_no, m.first_name, m.last_name, m.titles, s.salary
+	INTO mentorship_salaries
+FROM mentorship_eligibility as m
+	INNER JOIN salaries as s
+		on m.emp_no = s.emp_no
+
+--Salary remaining from mentors -- $81,583,447
+SELECT SUM (salary)
+FROM mentorship_salaries
+
+-- Retiree total salary
+SELECT r.emp_no, r.first_name, r.last_name, s.salary
+	INTO retiree_salaries
+FROM retirement_titles as r
+	INNER JOIN salaries as s
+		on r.emp_no = s.emp_no
+		
+-- Sum of salaries after retirement - $7,086,793,392
+SELECT SUM (salary)
+FROM retiree_salaries
+
+
